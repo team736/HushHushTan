@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">Austin Mobile Tanning</span>
+      <h2>The glow comes to you</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h4>Book your group</h4><p class="text-muted mb-0">5 person minimum.</p></div>
+      <div class="step"><h4>We arrive</h4><p class="text-muted mb-0">Your home, hotel, or venue.</p></div>
+      <div class="step"><h4>Custom airbrush tans</h4><p class="text-muted mb-0">Same studio experience.</p></div>
+      <div class="step"><h4>Glow on</h4><p class="text-muted mb-0">Aftercare guidance included.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="wrap" style="max-width:680px">
+    <div class="section__head">
+      <span class="eyebrow">Pricing</span>
+      <h2>Mobile rates</h2>
+    </div>
+    <table class="price-table">
+      <tbody>
+        <tr><td>Austin Mobile Tanning</td><td>$75 per person</td></tr>
+      </tbody>
+    </table>
+    <p class="center text-muted mt-2" style="font-size:.9rem">5 person minimum. Travel fees may apply by location.</p>
+    <div class="btn-row mt-4">
+      {%- if settings.book_austin != blank -%}<a class="btn btn--primary" href="{{ settings.book_austin }}" data-set-loc>Book Austin Mobile</a>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% render 'page-final-cta' %}

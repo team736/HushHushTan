@@ -1,0 +1,48 @@
+{%- liquid
+  case loc
+    when 'austin'
+      assign city = 'Austin'
+      assign addr = settings.austin_address
+      assign phone = settings.austin_phone
+      assign hours = settings.austin_hours
+      assign map = settings.austin_map
+      assign book = settings.book_austin
+      assign gift = settings.gift_austin
+    when 'dallas'
+      assign city = 'Dallas'
+      assign addr = settings.dallas_address
+      assign phone = settings.dallas_phone
+      assign hours = settings.dallas_hours
+      assign map = settings.dallas_map
+      assign book = settings.book_dallas
+      assign gift = settings.gift_dallas
+    when 'houston'
+      assign city = 'Houston'
+      assign addr = settings.houston_address
+      assign phone = settings.houston_phone
+      assign hours = settings.houston_hours
+      assign map = settings.houston_map
+      assign book = settings.book_houston
+      assign gift = settings.gift_houston
+  endcase
+-%}
+
+<section class="section">
+  <div class="wrap grid grid-2">
+    <div>
+      <h3>Studio details</h3>
+      <p class="text-muted mb-0">{{ addr }}</p>
+      {%- if phone != blank -%}<p class="text-muted">{{ phone }}</p>{%- endif -%}
+      {%- if hours != blank -%}<p class="text-muted">{{ hours }}</p>{%- endif -%}
+      <div class="btn-row mt-2">
+        {%- if book != blank -%}<a class="btn btn--primary" href="{{ book }}" data-set-loc>Book {{ city }}</a>{%- endif -%}
+        {%- if gift != blank -%}<a class="btn btn--secondary" href="{{ gift }}">Gift Certificates</a>{%- endif -%}
+        {%- if map != blank -%}<a class="btn btn--ghost" href="{{ map }}" target="_blank" rel="noopener">Open in Maps →</a>{%- endif -%}
+      </div>
+    </div>
+    <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#EFE9F7,#C9B8E0);border-radius:18px"></div>
+  </div>
+</section>
+
+{% render 'page-services', loc: loc %}
+{% render 'page-final-cta' %}

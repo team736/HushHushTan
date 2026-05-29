@@ -1,0 +1,11 @@
+<section class="section section--lavender">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">Ready for your glow?</span>
+    <h2>Book your custom tan today</h2>
+    <div class="btn-row mt-4">
+      {%- if settings.book_austin != blank -%}<a class="btn btn--primary" href="{{ settings.book_austin }}" data-set-loc>Book Austin</a>{%- endif -%}
+      {%- if settings.book_dallas != blank -%}<a class="btn btn--primary" href="{{ settings.book_dallas }}" data-set-loc>Book Dallas</a>{%- endif -%}
+      {%- if settings.book_houston != blank -%}<a class="btn btn--primary" href="{{ settings.book_houston }}" data-set-loc>Book Houston</a>{%- endif -%}
+    </div>
+  </div>
+</section>

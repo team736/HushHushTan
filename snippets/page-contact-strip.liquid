@@ -1,0 +1,37 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section__head"><span class="eyebrow">Visit a studio</span><h2>Austin · Dallas · Houston</h2></div>
+    <div class="grid grid-3">
+      <div class="contact-card">
+        <h3>Austin</h3>
+        <p class="text-muted mb-0">{{ settings.austin_address }}</p>
+        {%- if settings.austin_phone != blank -%}<p class="text-muted">{{ settings.austin_phone }}</p>{%- endif -%}
+        {%- if settings.austin_hours != blank -%}<p class="text-muted">{{ settings.austin_hours }}</p>{%- endif -%}
+        <div class="btn-row mt-2">
+          {%- if settings.book_austin != blank -%}<a class="btn btn--primary btn--small" href="{{ settings.book_austin }}" data-set-loc>Book</a>{%- endif -%}
+          {%- if settings.austin_map != blank -%}<a class="btn btn--secondary btn--small" href="{{ settings.austin_map }}" target="_blank" rel="noopener">Map</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Dallas</h3>
+        <p class="text-muted mb-0">{{ settings.dallas_address }}</p>
+        {%- if settings.dallas_phone != blank -%}<p class="text-muted">{{ settings.dallas_phone }}</p>{%- endif -%}
+        {%- if settings.dallas_hours != blank -%}<p class="text-muted">{{ settings.dallas_hours }}</p>{%- endif -%}
+        <div class="btn-row mt-2">
+          {%- if settings.book_dallas != blank -%}<a class="btn btn--primary btn--small" href="{{ settings.book_dallas }}" data-set-loc>Book</a>{%- endif -%}
+          {%- if settings.dallas_map != blank -%}<a class="btn btn--secondary btn--small" href="{{ settings.dallas_map }}" target="_blank" rel="noopener">Map</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Houston</h3>
+        <p class="text-muted mb-0">{{ settings.houston_address }}</p>
+        {%- if settings.houston_phone != blank -%}<p class="text-muted">{{ settings.houston_phone }}</p>{%- endif -%}
+        {%- if settings.houston_hours != blank -%}<p class="text-muted">{{ settings.houston_hours }}</p>{%- endif -%}
+        <div class="btn-row mt-2">
+          {%- if settings.book_houston != blank -%}<a class="btn btn--primary btn--small" href="{{ settings.book_houston }}" data-set-loc>Book</a>{%- endif -%}
+          {%- if settings.houston_map != blank -%}<a class="btn btn--secondary btn--small" href="{{ settings.houston_map }}" target="_blank" rel="noopener">Map</a>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

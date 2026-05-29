@@ -1,0 +1,48 @@
+{%- liquid
+  assign default_city = loc | default: 'austin'
+-%}
+
+<section class="section section--lavender">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">Our Glow Menu</span>
+      <h2>Find your perfect glow</h2>
+    </div>
+    <div class="glow-grid">
+      <a href="#pricing" class="glow-card"><h4>Clear Glow</h4><div class="price">From $40</div></a>
+      <a href="#pricing" class="glow-card"><h4>Custom Glow</h4><div class="price">From $40</div></a>
+      <a href="#pricing" class="glow-card"><h4>Gold Glow</h4><div class="price">From $45</div></a>
+      <a href="#pricing" class="glow-card"><h4>Brazilian Glow</h4><div class="price">From $50</div></a>
+      <a href="#pricing" class="glow-card"><h4>Rapid Glow</h4><div class="price">From $55</div></a>
+      <a href="#pricing" class="glow-card"><h4>Bye Bye Tan Line</h4><div class="price">From $55</div></a>
+      <a href="#pricing" class="glow-card"><h4>Happy Birthday Glow</h4><div class="price">From $34</div></a>
+      <a href="#pricing" class="glow-card"><h4>Partial Body</h4><div class="price">From $5</div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing" data-pricing-tabs>
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">Pricing</span>
+      <h2>Memberships, packages & sessions</h2>
+      <p class="text-muted">Pricing varies by location.</p>
+    </div>
+    <div class="pricing-tabs">
+      <button data-tab="austin" class="{% if default_city == 'austin' %}is-active{% endif %}">Austin</button>
+      <button data-tab="dallas" class="{% if default_city == 'dallas' %}is-active{% endif %}">Dallas</button>
+      <button data-tab="houston" class="{% if default_city == 'houston' %}is-active{% endif %}">Houston</button>
+    </div>
+    {%- assign ah = 'austin,houston' | split: ',' -%}
+    {%- for city in ah -%}
+      <div class="price-panel {% if city == default_city %}is-active{% endif %}" data-panel="{{ city }}">
+        {% render 'pricing-austin-houston', city: city %}
+      </div>
+    {%- endfor -%}
+    <div class="price-panel {% if default_city == 'dallas' %}is-active{% endif %}" data-panel="dallas">
+      {% render 'pricing-dallas' %}
+    </div>
+  </div>
+</section>
+
+{% render 'page-final-cta' %}

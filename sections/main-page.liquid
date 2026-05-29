@@ -1,13 +1,68 @@
+{%- liquid
+  assign h = page.handle
+  assign loc = ''
+  if h contains 'austin'
+    assign loc = 'austin'
+  elsif h contains 'dallas'
+    assign loc = 'dallas'
+  elsif h contains 'houston'
+    assign loc = 'houston'
+  endif
+-%}
+
 <div class="page-hero">
   <div class="wrap">
+    {%- if loc != blank and h contains 'location' -%}<span class="eyebrow">Location</span>{%- endif -%}
     <h1>{{ page.title }}</h1>
+    {%- if h == 'locations' -%}
+      <p>Austin · Dallas · Houston — choose your studio.</p>
+    {%- elsif h contains 'services' or h contains 'pricing' -%}
+      <p>Custom airbrush spray tans. Pricing varies by location.</p>
+    {%- elsif h contains 'group' or h contains 'mimosa' or h contains 'party' -%}
+      <p>Bridal parties, birthdays, girls' nights — 5 person minimum.</p>
+    {%- elsif h contains 'mobile' -%}
+      <p>We bring the glow to you in Austin.</p>
+    {%- elsif h == 'about' or h contains 'story' -%}
+      <p>Our promise: everyone will notice. No one will know.</p>
+    {%- elsif h == 'press' -%}
+      <p>Featured in the press.</p>
+    {%- elsif h contains 'faq' -%}
+      <p>Everything you need to know about your custom tan.</p>
+    {%- elsif h == 'contact' -%}
+      <p>Get in touch — Austin, Dallas, Houston.</p>
+    {%- elsif h == 'careers' -%}
+      <p>Join the Hush Hush Tan team.</p>
+    {%- endif -%}
   </div>
 </div>
+
+{%- if page.content != blank -%}
 <section class="section">
   <div class="wrap" style="max-width:780px">
     <div class="rte">{{ page.content }}</div>
   </div>
 </section>
+{%- endif -%}
+
+{%- if h == 'locations' -%}
+  {% render 'page-locations' %}
+{%- elsif loc != blank and h contains 'location' -%}
+  {% render 'page-location-detail', loc: loc %}
+{%- elsif h contains 'services' or h contains 'pricing' -%}
+  {% render 'page-services', loc: loc %}
+{%- elsif h contains 'group' or h contains 'mimosa' or h contains 'party' -%}
+  {% render 'page-group-tanning' %}
+{%- elsif h contains 'mobile' -%}
+  {% render 'page-mobile-tanning' %}
+{%- elsif h == 'about' or h contains 'story' -%}
+  {% render 'page-about' %}
+{%- elsif h == 'contact' -%}
+  {% render 'page-contact' %}
+{%- elsif h == 'press' -%}
+  {% render 'page-press' %}
+{%- elsif h contains 'faq' -%}
+  {% render 'page-faq' %}
+{%- endif -%}
 
 {% schema %}
 { "name": "Page", "settings": [] }

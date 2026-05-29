@@ -1,0 +1,24 @@
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="grid grid-3">
+      {%- assign cities = 'Austin,Dallas,Houston' | split: ',' -%}
+      {%- for city in cities -%}
+        {%- assign key = city | downcase -%}
+        {%- assign book = settings.book_austin -%}
+        {%- if key == 'dallas' -%}{%- assign book = settings.book_dallas -%}{%- endif -%}
+        {%- if key == 'houston' -%}{%- assign book = settings.book_houston -%}{%- endif -%}
+        <article class="loc-card" style="background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 100%),linear-gradient(135deg,#C9B8E0,#8E7AB5);color:#fff">
+          <h3>{{ city }}</h3>
+          <p style="opacity:.9">Premium custom airbrush spray tans in {{ city }}.</p>
+          <div class="btn-row">
+            {%- if book != blank -%}<a href="{{ book }}" class="btn btn--primary btn--small" data-set-loc>Book {{ city }}</a>{%- endif -%}
+            <a href="/pages/location-{{ key }}" class="btn btn--secondary btn--small" style="border-color:#fff;color:#fff">View Studio</a>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% render 'page-contact-strip' %}
+{% render 'page-final-cta' %}
