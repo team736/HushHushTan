@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">Contact</span>
+      <h2>Visit a studio</h2>
+      <p class="text-muted">Austin · Dallas · Houston</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="contact-card">
+        <h3>Austin</h3>
+        <p class="text-muted mb-0">{{ settings.austin_address }}</p>
+        {%- if settings.austin_phone != blank -%}<p class="text-muted">{{ settings.austin_phone }}</p>{%- endif -%}
+        {%- if settings.austin_hours != blank -%}<p class="text-muted">{{ settings.austin_hours }}</p>{%- endif -%}
+        <div class="btn-row mt-2">
+          {%- if settings.book_austin != blank -%}<a class="btn btn--primary btn--small" href="{{ settings.book_austin }}" data-set-loc>Book</a>{%- endif -%}
+          {%- if settings.austin_map != blank -%}<a class="btn btn--secondary btn--small" href="{{ settings.austin_map }}" target="_blank" rel="noopener">Map</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Dallas</h3>
+        <p class="text-muted mb-0">{{ settings.dallas_address }}</p>
+        {%- if settings.dallas_phone != blank -%}<p class="text-muted">{{ settings.dallas_phone }}</p>{%- endif -%}
+        {%- if settings.dallas_hours != blank -%}<p class="text-muted">{{ settings.dallas_hours }}</p>{%- endif -%}
+        <div class="btn-row mt-2">
+          {%- if settings.book_dallas != blank -%}<a class="btn btn--primary btn--small" href="{{ settings.book_dallas }}" data-set-loc>Book</a>{%- endif -%}
+          {%- if settings.dallas_map != blank -%}<a class="btn btn--secondary btn--small" href="{{ settings.dallas_map }}" target="_blank" rel="noopener">Map</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Houston</h3>
+        <p class="text-muted mb-0">{{ settings.houston_address }}</p>
+        {%- if settings.houston_phone != blank -%}<p class="text-muted">{{ settings.houston_phone }}</p>{%- endif -%}
+        {%- if settings.houston_hours != blank -%}<p class="text-muted">{{ settings.houston_hours }}</p>{%- endif -%}
+        <div class="btn-row mt-2">
+          {%- if settings.book_houston != blank -%}<a class="btn btn--primary btn--small" href="{{ settings.book_houston }}" data-set-loc>Book</a>{%- endif -%}
+          {%- if settings.houston_map != blank -%}<a class="btn btn--secondary btn--small" href="{{ settings.houston_map }}" target="_blank" rel="noopener">Map</a>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="wrap" style="max-width:640px">
+    <h2 class="center">Get in touch</h2>
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}<p class="center text-muted">Thanks — we'll be in touch.</p>{% endif %}
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <input type="text" name="contact[name]" placeholder="Name" required style="padding:14px;border-radius:12px;border:1px solid var(--color-border);background:#fff">
+        <input type="email" name="contact[email]" placeholder="Email" required style="padding:14px;border-radius:12px;border:1px solid var(--color-border);background:#fff">
+        <textarea name="contact[body]" placeholder="Message" rows="5" required style="padding:14px;border-radius:12px;border:1px solid var(--color-border);background:#fff"></textarea>
+        <button class="btn btn--primary" type="submit">Send</button>
+      </div>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Contact locations", "settings": [], "presets": [{ "name": "Contact locations" }] }
+{% endschema %}

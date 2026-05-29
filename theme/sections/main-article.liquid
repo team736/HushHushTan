@@ -1,0 +1,16 @@
+<article class="article">
+  <span class="eyebrow">{{ article.published_at | date: '%b %d, %Y' }}</span>
+  <h1>{{ article.title }}</h1>
+  <div class="meta">{% if article.author %}By {{ article.author }}{% endif %}</div>
+  {%- if article.image -%}<img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.title | escape }}" style="border-radius:16px;margin-bottom:32px">{%- endif -%}
+  <div class="rte">{{ article.content }}</div>
+
+  <div class="btn-row mt-4">
+    <a href="{{ settings.book_austin }}" class="btn btn--primary">Book a Spray Tan</a>
+    <a href="/collections/all" class="btn btn--secondary">Shop Products</a>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

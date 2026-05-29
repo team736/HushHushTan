@@ -1,0 +1,42 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">{{ section.settings.eyebrow | default: 'FAQ' }}</span>
+      <h2>{{ section.settings.heading | default: 'Frequently asked' }}</h2>
+    </div>
+    <div class="faq-group accordion">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'group' -%}
+          <h3>{{ block.settings.title }}</h3>
+        {%- else -%}
+          <details {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question }}</summary>
+            <div class="rte text-muted">{{ block.settings.answer }}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ accordion",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" }
+  ],
+  "blocks": [
+    { "type": "group", "name": "Group heading", "settings": [ { "type": "text", "id": "title", "label": "Title" } ] },
+    {
+      "type": "item",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "FAQ accordion" }]
+}
+{% endschema %}

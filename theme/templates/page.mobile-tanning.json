@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "how": { "type": "how-it-works" },
+    "pricing": { "type": "pricing-tabs", "settings": { "default_city": "austin" } },
+    "faq": { "type": "faq-accordion" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","how","pricing","faq","final"]
+}

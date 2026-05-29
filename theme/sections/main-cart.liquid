@@ -1,0 +1,32 @@
+<section class="section">
+  <div class="wrap" style="max-width:880px">
+    <h1 class="center">{{ 'general.cart.title' | t }}</h1>
+    {%- if cart.item_count == 0 -%}
+      <p class="center text-muted">{{ 'general.cart.empty' | t }}</p>
+      <div class="btn-row mt-4"><a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">{{ 'general.cart.continue_shopping' | t }}</a></div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        {%- for item in cart.items -%}
+          <div class="cart-item">
+            {%- if item.image -%}<img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}">{%- endif -%}
+            <div class="ci-body">
+              <a href="{{ item.url }}"><strong>{{ item.product.title }}</strong></a>
+              {%- unless item.product.has_only_default_variant -%}<div class="text-muted" style="font-size:.9rem">{{ item.variant.title }}</div>{%- endunless -%}
+              <div>{{ item.final_price | money }} × {{ item.quantity }}</div>
+              <div><a href="{{ item.url_to_remove }}" class="text-muted" style="font-size:.85rem">{{ 'general.cart.remove' | t }}</a></div>
+            </div>
+            <div><strong>{{ item.final_line_price | money }}</strong></div>
+          </div>
+        {%- endfor -%}
+        <div class="cart-foot">
+          <div class="row"><span>{{ 'general.cart.subtotal' | t }}</span><span>{{ cart.total_price | money }}</span></div>
+          <button type="submit" name="checkout" class="btn btn--primary" style="width:100%">{{ 'general.cart.checkout' | t }}</button>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Cart", "settings": [] }
+{% endschema %}

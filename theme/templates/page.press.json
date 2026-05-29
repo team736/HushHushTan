@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "press": { "type": "press-grid" }
+  },
+  "order": ["hero","press"]
+}

@@ -1,0 +1,53 @@
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="section__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="text-muted">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+    <div class="grid grid-3">
+      {%- for block in section.blocks -%}
+        <article class="loc-card" {{ block.shopify_attributes }} style="{% if block.settings.image %}background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 100%),url({{ block.settings.image | image_url: width: 900 }});background-size:cover;background-position:center;color:#fff{% endif %}">
+          <h3>{{ block.settings.city }}</h3>
+          {%- if block.settings.intro != blank -%}<p style="opacity:.9">{{ block.settings.intro }}</p>{%- endif -%}
+          <div class="btn-row">
+            {%- if block.settings.book_url != blank -%}<a href="{{ block.settings.book_url }}" class="btn btn--primary btn--small" data-set-loc>Book {{ block.settings.city }}</a>{%- endif -%}
+            {%- if block.settings.services_url != blank -%}<a href="{{ block.settings.services_url }}" class="btn btn--secondary btn--small" style="border-color:#fff;color:#fff">View Pricing</a>{%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Location cards",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Locations" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose your studio" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Location",
+      "settings": [
+        { "type": "text", "id": "city", "label": "City" },
+        { "type": "textarea", "id": "intro", "label": "Intro" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "book_url", "label": "Book URL" },
+        { "type": "url", "id": "services_url", "label": "Services URL" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "location", "settings": { "city": "Austin" } },
+      { "type": "location", "settings": { "city": "Dallas" } },
+      { "type": "location", "settings": { "city": "Houston" } }
+    ]
+  },
+  "presets": [{ "name": "Location cards" }]
+}
+{% endschema %}

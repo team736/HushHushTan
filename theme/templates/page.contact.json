@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "locations": { "type": "contact-locations" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","locations","final"]
+}

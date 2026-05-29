@@ -1,0 +1,1 @@
+<section class="section"><div class="wrap" style="max-width:760px"><h1>Addresses</h1>{% paginate customer.addresses by 5 %}{% for address in customer.addresses %}<div class="card" style="padding:18px;margin-bottom:16px">{{ address | format_address }}</div>{% endfor %}{% endpaginate %}</div></section>

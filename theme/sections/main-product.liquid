@@ -1,0 +1,124 @@
+<section class="wrap">
+  <div class="pdp">
+    <div class="pdp__gallery" data-gallery>
+      <div class="pdp__main-img">
+        {%- if product.featured_image -%}
+          <img data-main-img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}">
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="pdp__thumbs">
+          {%- for img in product.images limit: 10 -%}
+            <button type="button" data-thumb="{{ img | image_url: width: 1200 }}" {% if forloop.first %}class="is-active"{% endif %} aria-label="Image {{ forloop.index }}">
+              <img src="{{ img | image_url: width: 200 }}" alt="" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div>
+      {%- if product.vendor -%}<span class="eyebrow">{{ product.vendor }}</span>{%- endif -%}
+      <h1>{{ product.title }}</h1>
+      <div class="pdp__price" data-current-price>
+        {%- if product.compare_at_price > product.price -%}
+          {{ product.price | money }} <s>{{ product.compare_at_price | money }}</s>
+        {%- else -%}
+          {{ product.price | money }}
+        {%- endif -%}
+      </div>
+
+      <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" data-product-form="{{ product.id }}">
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="variant-row">
+              <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+              <select id="Option-{{ section.id }}-{{ forloop.index0 }}" data-option="{{ option.position }}">
+                {%- for val in option.values -%}
+                  <option value="{{ val | escape }}" {% if val == option.selected_value %}selected{% endif %}>{{ val }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        <div class="pdp__actions">
+          <div class="qty">
+            <button type="button" data-qty="-1" aria-label="Decrease">−</button>
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="button" data-qty="1" aria-label="Increase">+</button>
+          </div>
+          <button type="submit" class="btn btn--primary" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}{{ 'products.product.add_to_cart' | t }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
+          </button>
+        </div>
+
+        {%- if block.settings -%}{%- endif -%}
+      </form>
+
+      {%- if product.description != blank -%}
+        <div class="rte text-muted" style="margin-bottom:8px">{{ product.description }}</div>
+      {%- endif -%}
+
+      <div class="accordion">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'accordion' and block.settings.body != blank -%}
+            <details {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.title }}</summary>
+              <div class="rte text-muted">{{ block.settings.body }}</div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if product.metafields.custom.how_to_use -%}
+          <details><summary>How to use</summary><div class="rte text-muted">{{ product.metafields.custom.how_to_use }}</div></details>
+        {%- endif -%}
+        {%- if product.metafields.custom.benefits -%}
+          <details><summary>Benefits</summary><div class="rte text-muted">{{ product.metafields.custom.benefits }}</div></details>
+        {%- endif -%}
+        {%- if product.metafields.custom.ingredients -%}
+          <details><summary>Ingredients</summary><div class="rte text-muted">{{ product.metafields.custom.ingredients }}</div></details>
+        {%- endif -%}
+        <details><summary>Shipping & returns</summary><div class="rte text-muted">Orders ship within 1–3 business days. Contact us with any questions.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pdp-sticky">
+  <div>
+    <strong>{{ product.title }}</strong><br>
+    <span class="text-muted">{{ product.price | money }}</span>
+  </div>
+  <a href="#" class="btn btn--primary btn--small" onclick="document.querySelector('[data-product-form] button[type=submit]').click();return false;">Add to cart</a>
+</div>
+
+<script>
+  window.ProductJSON = window.ProductJSON || {};
+  window.ProductJSON[{{ product.id }}] = {{ product | json }};
+  window.ShopCurrency = "{{ cart.currency.iso_code }}";
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion section",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "body", "label": "Body" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "accordion", "settings": { "title": "How to use" } },
+      { "type": "accordion", "settings": { "title": "Benefits" } }
+    ]
+  }
+}
+{% endschema %}

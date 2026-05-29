@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="theme-color" content="{{ settings.color_lavender_pale }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+
+    {{ content_for_header }}
+
+    {%- liquid
+      assign font_heading = settings.font_heading
+      assign font_body = settings.font_body
+    -%}
+
+    <style>
+      {{ font_heading | font_face: font_display: 'swap' }}
+      {{ font_body | font_face: font_display: 'swap' }}
+      :root{
+        --color-bg: {{ settings.color_bg }};
+        --color-bg-soft: {{ settings.color_bg_soft }};
+        --color-lavender: {{ settings.color_lavender }};
+        --color-lavender-pale: {{ settings.color_lavender_pale }};
+        --color-text: {{ settings.color_text }};
+        --color-muted: {{ settings.color_muted }};
+        --color-border: {{ settings.color_border }};
+        --color-accent: {{ settings.color_accent }};
+        --color-button: {{ settings.color_button }};
+        --color-button-text: {{ settings.color_button_text }};
+        --page-width: {{ settings.page_width }}px;
+        --section-spacing: {{ settings.section_spacing }}px;
+        --font-heading: {{ font_heading.family }}, {{ font_heading.fallback_families }};
+        --font-body: {{ font_body.family }}, {{ font_body.fallback_families }};
+        --heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
+        --body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+      }
+    </style>
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </head>
+
+  <body class="template-{{ template | replace: '.', '-' | handle }}">
+    <a class="skip" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {% section 'announcement' %}
+    {% section 'header' %}
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <a href="#" class="sticky-book" id="StickyBook" data-default-url="{{ settings.book_austin | default: '#' }}">Book Now</a>
+
+    <div id="CartDrawer" class="drawer" aria-hidden="true">
+      <div class="drawer__overlay" data-close></div>
+      <aside class="drawer__panel" role="dialog" aria-label="Cart">
+        <header class="drawer__head">
+          <h2>{{ 'general.cart.title' | t }}</h2>
+          <button class="drawer__close" data-close aria-label="Close">×</button>
+        </header>
+        <div class="drawer__body" id="CartDrawerBody">
+          {% render 'cart-contents' %}
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>

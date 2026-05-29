@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "promise": { "type": "rich-text", "settings": { "bg": "soft", "eyebrow": "Our promise", "heading": "Everyone will notice. No one will know.", "body": "<p>Premium custom airbrush spray tans, designed for real skin.</p>" } },
+    "press": { "type": "press-grid" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","promise","press","final"]
+}

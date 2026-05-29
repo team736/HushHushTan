@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Premium custom spray tans",
+        "heading": "Healthier Glow. Flawless Confidence.",
+        "subheading": "Customizable spray tan salons in Austin, Dallas, and Houston.",
+        "cta1_text": "Book Now",
+        "cta2_text": "Choose Your Location",
+        "cta2_url": "/pages/locations"
+      }
+    },
+    "locations": {
+      "type": "location-cards",
+      "blocks": {
+        "a": { "type": "location", "settings": { "city": "Austin", "intro": "W. 6th — custom airbrush tans in our flagship studio.", "services_url": "/pages/services-austin" } },
+        "d": { "type": "location", "settings": { "city": "Dallas", "intro": "Our newest studio bringing the Hush Hush glow to North Texas.", "services_url": "/pages/services-dallas" } },
+        "h": { "type": "location", "settings": { "city": "Houston", "intro": "A premium custom spray tan experience in H-Town.", "services_url": "/pages/services-houston" } }
+      },
+      "block_order": ["a","d","h"]
+    },
+    "promise": {
+      "type": "rich-text",
+      "settings": {
+        "bg": "white",
+        "eyebrow": "Our promise",
+        "heading": "Everyone will notice. No one will know.",
+        "body": "<p>A flawless, custom airbrush tan tailored to your skin tone in a private, premium studio. No UV. No streaks. No orange.</p>"
+      }
+    },
+    "services": {
+      "type": "services-preview",
+      "settings": { "eyebrow": "Services", "heading": "What we do" },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "title": "Spray Tanning", "body": "Custom airbrush tans in our private studios.", "cta_text": "See pricing", "cta_url": "/pages/services" } },
+        "s2": { "type": "service", "settings": { "title": "Mobile Tanning", "body": "Bring the glow to your door in Austin.", "cta_text": "Learn more", "cta_url": "/pages/mobile-tanning" } },
+        "s3": { "type": "service", "settings": { "title": "Tanning Products", "body": "Extend your glow with our curated edit.", "cta_text": "Shop", "cta_url": "/collections/all" } }
+      },
+      "block_order": ["s1","s2","s3"]
+    },
+    "glow": { "type": "glow-grid" },
+    "how": { "type": "how-it-works" },
+    "pricing": { "type": "pricing-tabs" },
+    "parties": {
+      "type": "rich-text",
+      "settings": {
+        "bg": "soft",
+        "eyebrow": "Parties & Events",
+        "heading": "Group Tanning & Mimosas",
+        "body": "<p>Make it a moment. Book your bridal party, birthday, or girls' night with us — 5 person minimum.</p>",
+        "cta_text": "Plan your event",
+        "cta_url": "/pages/group-tanning"
+      }
+    },
+    "products": {
+      "type": "featured-products",
+      "settings": { "eyebrow": "Extend your glow", "heading": "Tanning Products" }
+    },
+    "press": { "type": "press-grid" },
+    "newsletter": { "type": "newsletter" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","locations","promise","services","glow","how","pricing","parties","products","press","newsletter","final"]
+}

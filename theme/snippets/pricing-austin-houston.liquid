@@ -1,0 +1,110 @@
+{%- liquid
+  assign book_url = settings.book_austin
+  if city == 'houston'
+    assign book_url = settings.book_houston
+  endif
+-%}
+<div class="price-section">
+  <h3>Memberships</h3>
+  <div class="member-grid">
+    <div class="member-card">
+      <div class="tier">Glow</div>
+      <div class="amount">$66</div>
+      <div class="per">per month</div>
+      <ul>
+        <li>2 tans per month</li>
+        <li>10% off products</li>
+        <li>Additional custom tan $35</li>
+      </ul>
+      <a href="{{ book_url }}" class="btn btn--secondary btn--small">Become a member</a>
+    </div>
+    <div class="member-card is-featured">
+      <div class="tier">Deluxe</div>
+      <div class="amount">$96</div>
+      <div class="per">per month</div>
+      <ul>
+        <li>3 tans per month</li>
+        <li>10% off products</li>
+        <li>Additional custom tan $35</li>
+      </ul>
+      <a href="{{ book_url }}" class="btn btn--primary btn--small">Become a member</a>
+    </div>
+    <div class="member-card">
+      <div class="tier">Absolute</div>
+      <div class="amount">$120</div>
+      <div class="per">per month</div>
+      <ul>
+        <li>4 tans per month</li>
+        <li>10% off products</li>
+        <li>Additional custom tan $35</li>
+      </ul>
+      <a href="{{ book_url }}" class="btn btn--secondary btn--small">Become a member</a>
+    </div>
+  </div>
+</div>
+
+<div class="price-section">
+  <h3>Prepaid Packages</h3>
+  <table class="price-table">
+    <thead><tr><th>Package</th><th>Price per session</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td>Glow-Getter — 5 Custom Glows</td><td>$35 / session</td><td>$175 one-time</td></tr>
+      <tr><td>Ultimate Glow — 10 Custom Glows</td><td>$35 / session</td><td>$350 one-time</td></tr>
+      <tr><td>Elite Glow — 15 Custom Glows</td><td>$35 / session</td><td>$525 one-time</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="price-section">
+  <h3>Full Body Tans</h3>
+  <table class="price-table">
+    <tbody>
+      <tr><td>Clear Glow</td><td>$40</td></tr>
+      <tr><td>Custom Glow</td><td>$40</td></tr>
+      <tr><td>Gold Glow</td><td>$45</td></tr>
+      <tr><td>Brazilian Glow</td><td>$50</td></tr>
+      <tr><td>Rapid Glow</td><td>$55</td></tr>
+      <tr><td>Bye Bye Tan Line</td><td>$55</td></tr>
+      <tr><td>Happy Birthday Glow</td><td>$34</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="price-section">
+  <h3>Partial Body</h3>
+  <table class="price-table">
+    <tbody>
+      <tr><td>Face</td><td>$5</td></tr>
+      <tr><td>Partial Upper or Lower</td><td>$10</td></tr>
+      <tr><td>Upper or Lower</td><td>$20</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="price-section">
+  <h3>Group & Mobile</h3>
+  <table class="price-table">
+    <tbody>
+      <tr><td>In-Store Group Tanning & Mimosas</td><td>$50 per person (5 person minimum)</td></tr>
+      {%- if city == 'austin' -%}
+      <tr><td>Austin Mobile Tanning</td><td>$75 per person (5 person minimum, travel fees may apply)</td></tr>
+      {%- endif -%}
+    </tbody>
+  </table>
+</div>
+
+<div class="price-section">
+  <h3>Accessories</h3>
+  <table class="price-table">
+    <tbody>
+      <tr><td>Disposable Boxers</td><td>$3 / pair</td></tr>
+      <tr><td>Floral Pasties</td><td>$2 / pair</td></tr>
+      <tr><td>C-String Undies</td><td>$6 / pair</td></tr>
+      <tr><td>Complimentary</td><td>Disposable Undies, Nose Plugs, Hair Clips</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="center mt-4">
+  <a href="{{ book_url }}" class="btn btn--primary" data-set-loc>Book {{ city | capitalize }}</a>
+</div>

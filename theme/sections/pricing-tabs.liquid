@@ -1,0 +1,47 @@
+{%- liquid
+  assign default_city = section.settings.default_city | default: 'austin'
+-%}
+<section class="section" data-pricing-tabs>
+  <div class="wrap">
+    <div class="section__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | default: 'Services & Pricing' }}</h2>
+      {%- if section.settings.subheading != blank -%}<p class="text-muted">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="pricing-tabs">
+      <button data-tab="austin" class="{% if default_city == 'austin' %}is-active{% endif %}">Austin</button>
+      <button data-tab="dallas" class="{% if default_city == 'dallas' %}is-active{% endif %}">Dallas</button>
+      <button data-tab="houston" class="{% if default_city == 'houston' %}is-active{% endif %}">Houston</button>
+    </div>
+
+    {%- comment -%} AUSTIN / HOUSTON share pricing {%- endcomment -%}
+    {%- assign ah_panels = 'austin,houston' | split: ',' -%}
+    {%- for city in ah_panels -%}
+      <div class="price-panel {% if city == default_city %}is-active{% endif %}" data-panel="{{ city }}">
+        {% render 'pricing-austin-houston', city: city %}
+      </div>
+    {%- endfor -%}
+
+    <div class="price-panel {% if default_city == 'dallas' %}is-active{% endif %}" data-panel="dallas">
+      {% render 'pricing-dallas' %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pricing tabs",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Pricing" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Memberships, packages & sessions" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Pricing varies by location." },
+    { "type": "select", "id": "default_city", "label": "Default city", "options": [
+      { "value": "austin", "label": "Austin" },
+      { "value": "dallas", "label": "Dallas" },
+      { "value": "houston", "label": "Houston" }
+    ], "default": "austin" }
+  ],
+  "presets": [{ "name": "Pricing tabs" }]
+}
+{% endschema %}

@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "detail": { "type": "location-detail", "settings": { "city": "Dallas", "intro": "Hush Hush Tan Dallas studio — premium custom airbrush spray tans." } },
+    "glow": { "type": "glow-grid" },
+    "pricing": { "type": "pricing-tabs", "settings": { "default_city": "dallas" } },
+    "faq": { "type": "faq-accordion" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["detail","glow","pricing","faq","final"]
+}

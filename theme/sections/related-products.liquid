@@ -1,0 +1,16 @@
+{%- if recommendations.performed and recommendations.products_count > 0 -%}
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="section__head"><h2>You may also love</h2></div>
+    <div class="grid grid-4">
+      {%- for product in recommendations.products limit: 4 -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{ "name": "Related products", "settings": [] }
+{% endschema %}

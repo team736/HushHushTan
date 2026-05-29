@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "cards": { "type": "location-cards" },
+    "contact": { "type": "contact-locations" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","cards","contact","final"]
+}

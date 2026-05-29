@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "glow": { "type": "glow-grid" },
+    "pricing": { "type": "pricing-tabs" },
+    "how": { "type": "how-it-works" },
+    "faq": { "type": "faq-accordion" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","glow","pricing","how","faq","final"]
+}

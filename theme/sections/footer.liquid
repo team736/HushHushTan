@@ -1,0 +1,75 @@
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        {%- if settings.logo != blank -%}
+          <img src="{{ settings.logo | image_url: width: 400 }}" alt="{{ shop.name }}" style="max-width:180px;filter:brightness(0) invert(1)">
+        {%- else -%}
+          <strong style="font-family:var(--font-heading);letter-spacing:.16em;text-transform:uppercase">Hush Hush Tan</strong>
+        {%- endif -%}
+        <p style="margin-top:16px;opacity:.85;max-width:320px">{{ section.settings.tagline }}</p>
+        <form action="/contact#newsletter" method="post" class="newsletter-form">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" required>
+          <button type="submit">{{ 'general.newsletter.submit' | t }}</button>
+        </form>
+        <div style="display:flex;gap:14px;margin-top:18px">
+          {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="Instagram">Instagram</a>{%- endif -%}
+          {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="Facebook">Facebook</a>{%- endif -%}
+          {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="TikTok">TikTok</a>{%- endif -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <h5>{{ block.settings.title }}</h5>
+          <ul>
+            {%- if block.settings.menu != blank -%}
+              {%- for link in linklists[block.settings.menu].links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            {%- endif -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <span>
+        <a href="/policies/privacy-policy">Privacy</a> ·
+        <a href="/policies/terms-of-service">Terms</a> ·
+        <a href="/policies/shipping-policy">Shipping</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Healthier glow. Flawless confidence. Custom spray tans in Austin, Dallas, and Houston." }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Explore" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "menu", "settings": { "title": "Locations" } },
+      { "type": "menu", "settings": { "title": "Services" } },
+      { "type": "menu", "settings": { "title": "Company" } },
+      { "type": "menu", "settings": { "title": "Help" } }
+    ]
+  }
+}
+{% endschema %}

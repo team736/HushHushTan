@@ -1,0 +1,74 @@
+{%- liquid
+  assign city = section.settings.city | default: 'Austin'
+  assign city_key = city | downcase
+  case city_key
+    when 'austin'
+      assign addr = settings.austin_address
+      assign phone = settings.austin_phone
+      assign hours = settings.austin_hours
+      assign map = settings.austin_map
+      assign book = settings.book_austin
+      assign gift = settings.gift_austin
+    when 'dallas'
+      assign addr = settings.dallas_address
+      assign phone = settings.dallas_phone
+      assign hours = settings.dallas_hours
+      assign map = settings.dallas_map
+      assign book = settings.book_dallas
+      assign gift = settings.gift_dallas
+    when 'houston'
+      assign addr = settings.houston_address
+      assign phone = settings.houston_phone
+      assign hours = settings.houston_hours
+      assign map = settings.houston_map
+      assign book = settings.book_houston
+      assign gift = settings.gift_houston
+  endcase
+-%}
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Location</span>
+    <h1>Hush Hush Tan {{ city }}</h1>
+    <p>{{ section.settings.intro }}</p>
+    <div class="btn-row mt-2">
+      {%- if book != blank -%}<a class="btn btn--primary" href="{{ book }}" data-set-loc>Book {{ city }}</a>{%- endif -%}
+      {%- if gift != blank -%}<a class="btn btn--secondary" href="{{ gift }}">Gift Certificates</a>{%- endif -%}
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap grid grid-2">
+    <div>
+      <h3>Studio details</h3>
+      <p class="text-muted mb-0">{{ addr }}</p>
+      {%- if phone != blank -%}<p class="text-muted">{{ phone }}</p>{%- endif -%}
+      {%- if hours != blank -%}<p class="text-muted">{{ hours }}</p>{%- endif -%}
+      {%- if map != blank -%}<p><a class="btn btn--ghost" href="{{ map }}" target="_blank" rel="noopener">Open in Maps →</a></p>{%- endif -%}
+    </div>
+    <div>
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="{{ city }}" style="border-radius:18px;width:100%">
+      {%- else -%}
+        <div style="aspect-ratio:4/3;background:var(--color-lavender-pale);border-radius:18px"></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Location detail",
+  "settings": [
+    { "type": "select", "id": "city", "label": "City", "options": [
+      { "value": "Austin", "label": "Austin" },
+      { "value": "Dallas", "label": "Dallas" },
+      { "value": "Houston", "label": "Houston" }
+    ], "default": "Austin" },
+    { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "image_picker", "id": "image", "label": "Studio image" }
+  ],
+  "presets": [{ "name": "Location detail" }]
+}
+{% endschema %}

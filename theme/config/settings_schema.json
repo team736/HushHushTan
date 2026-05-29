@@ -1,0 +1,92 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Hush Hush Tan",
+    "theme_version": "1.0.0",
+    "theme_author": "Hush Hush Tan",
+    "theme_documentation_url": "https://hushhushtan.com",
+    "theme_support_url": "https://hushhushtan.com/pages/contact"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Background", "default": "#FFFFFF" },
+      { "type": "color", "id": "color_bg_soft", "label": "Soft background", "default": "#FAF7F4" },
+      { "type": "color", "id": "color_lavender", "label": "Lavender", "default": "#C9B8E0" },
+      { "type": "color", "id": "color_lavender_pale", "label": "Pale lavender", "default": "#EFE9F7" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#1E1B2E" },
+      { "type": "color", "id": "color_muted", "label": "Muted text", "default": "#6B6577" },
+      { "type": "color", "id": "color_border", "label": "Border", "default": "#E7E3EE" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#8E7AB5" },
+      { "type": "color", "id": "color_button", "label": "Button background", "default": "#1E1B2E" },
+      { "type": "color", "id": "color_button_text", "label": "Button text", "default": "#FFFFFF" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "font_picker", "id": "font_heading", "label": "Heading font", "default": "assistant_n7" },
+      { "type": "font_picker", "id": "font_body", "label": "Body font", "default": "assistant_n4" },
+      { "type": "range", "id": "heading_scale", "label": "Heading scale", "min": 90, "max": 130, "step": 5, "unit": "%", "default": 100 },
+      { "type": "range", "id": "body_scale", "label": "Body scale", "min": 90, "max": 120, "step": 5, "unit": "%", "default": 100 }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Page width", "min": 1100, "max": 1600, "step": 20, "unit": "px", "default": 1280 },
+      { "type": "range", "id": "section_spacing", "label": "Section spacing", "min": 40, "max": 140, "step": 4, "unit": "px", "default": 88 }
+    ]
+  },
+  {
+    "name": "Booking links",
+    "settings": [
+      { "type": "header", "content": "External Booker / SecureBooker URLs" },
+      { "type": "url", "id": "book_austin", "label": "Book Austin URL" },
+      { "type": "url", "id": "book_dallas", "label": "Book Dallas URL" },
+      { "type": "url", "id": "book_houston", "label": "Book Houston URL" },
+      { "type": "header", "content": "Gift certificates" },
+      { "type": "url", "id": "gift_austin", "label": "Austin gift certificates URL" },
+      { "type": "url", "id": "gift_dallas", "label": "Dallas gift certificates URL" },
+      { "type": "url", "id": "gift_houston", "label": "Houston gift certificates URL" },
+      { "type": "header", "content": "Parental consent" },
+      { "type": "url", "id": "parental_consent_url", "label": "Parental consent form URL" }
+    ]
+  },
+  {
+    "name": "Locations",
+    "settings": [
+      { "type": "header", "content": "Austin" },
+      { "type": "text", "id": "austin_address", "label": "Address", "default": "Austin, TX (W. 6th)" },
+      { "type": "text", "id": "austin_phone", "label": "Phone" },
+      { "type": "text", "id": "austin_hours", "label": "Hours" },
+      { "type": "url", "id": "austin_map", "label": "Map link" },
+      { "type": "header", "content": "Dallas" },
+      { "type": "text", "id": "dallas_address", "label": "Address", "default": "Dallas, TX" },
+      { "type": "text", "id": "dallas_phone", "label": "Phone" },
+      { "type": "text", "id": "dallas_hours", "label": "Hours" },
+      { "type": "url", "id": "dallas_map", "label": "Map link" },
+      { "type": "header", "content": "Houston" },
+      { "type": "text", "id": "houston_address", "label": "Address", "default": "Houston, TX" },
+      { "type": "text", "id": "houston_phone", "label": "Phone" },
+      { "type": "text", "id": "houston_hours", "label": "Hours" },
+      { "type": "url", "id": "houston_map", "label": "Map link" }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_facebook", "label": "Facebook" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo (horizontal)" },
+      { "type": "range", "id": "logo_width", "label": "Logo width", "min": 80, "max": 280, "step": 10, "unit": "px", "default": 180 },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  }
+]

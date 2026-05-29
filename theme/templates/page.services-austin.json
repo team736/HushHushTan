@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "pricing": { "type": "pricing-tabs", "settings": { "default_city": "austin" } },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","pricing","final"]
+}

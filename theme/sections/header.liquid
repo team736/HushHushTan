@@ -1,0 +1,51 @@
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
+      {%- if settings.logo != blank -%}
+        <img src="{{ settings.logo | image_url: width: 600 }}" alt="{{ shop.name }}" width="{{ settings.logo_width }}" style="width:{{ settings.logo_width }}px">
+      {%- else -%}
+        <span class="header__logo-text">Hush Hush Tan</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__cta">
+      <a href="{{ routes.search_url }}" class="header__icon" aria-label="Search">⌕</a>
+      <a href="{{ routes.account_url }}" class="header__icon" aria-label="Account">◐</a>
+      <a href="{{ routes.cart_url }}" class="header__icon" data-open-cart aria-label="Cart">
+        ⛬ <span data-cart-count class="hidden" style="margin-left:4px;font-size:.85rem">0</span>
+      </a>
+      {%- if section.settings.book_url != blank -%}
+        <a href="{{ section.settings.book_url }}" class="btn btn--primary btn--small">Book Now</a>
+      {%- endif -%}
+      <button class="header__icon menu-toggle" data-menu-toggle aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<aside class="mobile-nav" id="MobileNav" aria-label="Mobile navigation">
+  <button class="mobile-nav__close" data-close-menu aria-label="Close">×</button>
+  {%- for link in linklists[section.settings.menu].links -%}
+    <a href="{{ link.url }}" data-close-menu>{{ link.title }}</a>
+  {%- endfor -%}
+  <a href="{{ routes.account_url }}" data-close-menu>Account</a>
+  <a href="{{ routes.search_url }}" data-close-menu>Search</a>
+  {%- if section.settings.book_url != blank -%}
+    <a class="btn btn--primary mt-2" href="{{ section.settings.book_url }}">Book Now</a>
+  {%- endif -%}
+</aside>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "url", "id": "book_url", "label": "Primary Book Now URL" }
+  ]
+}
+{% endschema %}

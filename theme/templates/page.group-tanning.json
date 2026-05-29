@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "how": { "type": "how-it-works", "settings": { "eyebrow": "How it works", "heading": "How group tanning works" } },
+    "pricing": { "type": "pricing-tabs" },
+    "faq": { "type": "faq-accordion" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","how","pricing","faq","final"]
+}

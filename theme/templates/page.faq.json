@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "hero": { "type": "main-page" },
+    "faq": { "type": "faq-accordion" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["hero","faq","final"]
+}

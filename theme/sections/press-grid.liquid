@@ -1,0 +1,45 @@
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="eyebrow">{{ section.settings.eyebrow | default: 'Press' }}</span>
+      <h2>{{ section.settings.heading | default: 'Featured in' }}</h2>
+    </div>
+    <div class="press-grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.url | default: '#' }}" class="press-card" target="_blank" rel="noopener" {{ block.shopify_attributes }}>
+          <div class="pub">{{ block.settings.publication }}</div>
+          <h3 style="font-size:1.1rem;margin:8px 0">{{ block.settings.title }}</h3>
+          {%- if block.settings.excerpt != blank -%}<p class="text-muted mb-0">{{ block.settings.excerpt }}</p>{%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Press grid",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" }
+  ],
+  "blocks": [
+    {
+      "type": "press",
+      "name": "Press item",
+      "settings": [
+        { "type": "text", "id": "publication", "label": "Publication" },
+        { "type": "text", "id": "title", "label": "Article title" },
+        { "type": "textarea", "id": "excerpt", "label": "Excerpt" },
+        { "type": "url", "id": "url", "label": "Article URL" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "press" }, { "type": "press" }, { "type": "press" }
+    ]
+  },
+  "presets": [{ "name": "Press grid" }]
+}
+{% endschema %}

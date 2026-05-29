@@ -1,0 +1,22 @@
+{
+  "current": {
+    "color_bg": "#FFFFFF",
+    "color_bg_soft": "#FAF7F4",
+    "color_lavender": "#C9B8E0",
+    "color_lavender_pale": "#EFE9F7",
+    "color_text": "#1E1B2E",
+    "color_muted": "#6B6577",
+    "color_border": "#E7E3EE",
+    "color_accent": "#8E7AB5",
+    "color_button": "#1E1B2E",
+    "color_button_text": "#FFFFFF",
+    "page_width": 1280,
+    "section_spacing": 88,
+    "heading_scale": 100,
+    "body_scale": 100,
+    "logo_width": 180
+  },
+  "presets": {
+    "Default": {}
+  }
+}

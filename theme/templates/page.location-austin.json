@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "detail": { "type": "location-detail", "settings": { "city": "Austin", "intro": "Hush Hush Tan Austin studio — custom airbrush spray tans on W. 6th." } },
+    "glow": { "type": "glow-grid" },
+    "pricing": { "type": "pricing-tabs", "settings": { "default_city": "austin" } },
+    "faq": { "type": "faq-accordion" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["detail","glow","pricing","faq","final"]
+}

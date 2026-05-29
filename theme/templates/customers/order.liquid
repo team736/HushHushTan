@@ -1,0 +1,10 @@
+<section class="section"><div class="wrap" style="max-width:880px">
+  <h1>Order {{ order.name }}</h1>
+  <p class="text-muted">Placed {{ order.created_at | date: '%b %d, %Y' }}</p>
+  <table class="price-table"><thead><tr><th>Item</th><th>Qty</th><th>Total</th></tr></thead><tbody>
+    {%- for line in order.line_items -%}
+      <tr><td>{{ line.title }}</td><td>{{ line.quantity }}</td><td>{{ line.final_line_price | money }}</td></tr>
+    {%- endfor -%}
+  </tbody></table>
+  <p class="mt-4"><strong>Total: {{ order.total_price | money }}</strong></p>
+</div></section>
