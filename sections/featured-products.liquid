@@ -6,7 +6,7 @@
       {%- if section.settings.subheading != blank -%}<p class="text-muted">{{ section.settings.subheading }}</p>{%- endif -%}
     </div>
 
-    {%- assign coll = collections[section.settings.collection] -%}
+    {%- assign coll = section.settings.collection -%}
     {%- if coll != blank and coll.products_count > 0 -%}
       <div class="grid grid-4">
         {%- for product in coll.products limit: section.settings.product_limit -%}
